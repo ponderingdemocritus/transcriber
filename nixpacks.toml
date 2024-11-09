@@ -1,7 +1,6 @@
 # Specify the provider and build configuration
 [phases.setup]
 nixPkgs = [
-    # Core dependencies
     "nodejs_20",
     "bun",
     "ffmpeg",
@@ -10,21 +9,14 @@ nixPkgs = [
     "python3",
     "pkg-config",
     "gcc",
-    "make",
-
-    # Audio processing dependencies
-    "libopus",
+    "gnumake",
     "libogg",
+    "libopus",
     "libsodium",
-
-    # System dependencies
+    "libtool",
     "autoconf",
     "automake",
-    "libtool",
-    "gnumake",
     "python3Full",
-
-    # Additional build tools
     "npm",
     "git",
 ]
@@ -33,8 +25,7 @@ nixPkgs = [
 cmds = [
     "npm config set python python3",
     "npm install -g node-gyp",
-    "npm install -g node-pre-gyp",
-    "npm install",                   # Use npm for initial install
+    "npm install",
 ]
 
 [phases.setup.env]
@@ -43,10 +34,7 @@ NODE_GYP_FORCE_PYTHON = "python3"
 PATH = "/usr/local/bin:/usr/bin:/bin:/app/node_modules/.bin"
 
 [phases.build]
-cmds = [
-    "npm rebuild",
-    "bun install --no-save", # Try bun install after npm install
-]
+cmds = ["npm rebuild"]
 
 [start]
 cmd = "bun start"
