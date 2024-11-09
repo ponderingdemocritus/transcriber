@@ -21,11 +21,12 @@ nixPkgs = [
     "autoconf",
     "automake",
     "libtool",
-
-    # Build essentials
     "gnumake",
-    "nodejs.gyp",
     "python3Full",
+
+    # Additional build tools
+    "npm",
+    "git",
 ]
 
 [phases.install]
@@ -33,14 +34,18 @@ cmds = [
     "npm config set python python3",
     "npm install -g node-gyp",
     "npm install -g node-pre-gyp",
+    "npm install",                   # Use npm for initial install
 ]
+
+[phases.setup.env]
+PYTHON = "python3"
+NODE_GYP_FORCE_PYTHON = "python3"
+PATH = "/usr/local/bin:/usr/bin:/bin:/app/node_modules/.bin"
 
 [phases.build]
 cmds = [
-    "npm config set python python3",
-    "export NODE_GYP_FORCE_PYTHON=python3",
     "npm rebuild",
-    "bun install --no-save",
+    "bun install --no-save", # Try bun install after npm install
 ]
 
 [start]
@@ -48,6 +53,3 @@ cmd = "bun start"
 
 [variables]
 NODE_ENV = "production"
-PYTHON = "python3"
-NODE_GYP_FORCE_PYTHON = "python3"
-PATH = "/usr/local/bin:/usr/bin:/bin:/app/node_modules/.bin"
