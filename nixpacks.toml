@@ -1,15 +1,9 @@
 # Specify the provider and build configuration
 [phases.setup]
 nixPkgs = [
-    "nodejs_20",
+    "nodejs_18",
     "bun",
     "ffmpeg",
-    "opus",
-    "nodePackages.node-gyp",
-    "python3",
-    "pkg-config",
-    "gcc",
-    "gnumake",
     "libogg",
     "libopus",
     "libsodium",
@@ -18,23 +12,16 @@ nixPkgs = [
     "automake",
     "python3Full",
     "git",
-    "nodePackages.npm",
+    "gcc",
+    "pkg-config",
+    "gnumake",
 ]
 
 [phases.install]
 cmds = [
-    "npm config set python python3",
     "npm install -g node-gyp",
-    "npm install",
+    "npm install --build-from-source --legacy-peer-deps",
 ]
-
-[phases.setup.env]
-PYTHON = "python3"
-NODE_GYP_FORCE_PYTHON = "python3"
-PATH = "/usr/local/bin:/usr/bin:/bin:/app/node_modules/.bin"
-
-[phases.build]
-cmds = ["npm rebuild"]
 
 [start]
 cmd = "bun start"
