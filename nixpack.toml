@@ -1,0 +1,39 @@
+# Specify the provider and build configuration
+[phases.setup]
+nixPkgs = [
+    # Core dependencies
+    "nodejs_20",
+    "bun",
+    "ffmpeg",
+    "opus",
+    "nodePackages.node-gyp",
+    "python3",
+    "pkg-config",
+    "gcc",
+    "make",
+
+    # Audio processing dependencies
+    "libopus",
+    "libogg",
+    "libsodium",
+
+    # System dependencies
+    "autoconf",
+    "automake",
+    "libtool",
+
+    # Build essentials
+    "gnumake",
+    "nodejs.gyp",
+    "python3Full",
+]
+
+[phases.build]
+cmds = ["npm install -g node-gyp", "bun install"]
+
+[start]
+cmd = "bun start"
+
+[variables]
+NODE_ENV = "production"
+PYTHON = "python3"
