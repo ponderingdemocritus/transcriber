@@ -13,13 +13,12 @@ nixPkgs = [
     "python3Full",
     "git",
     "gcc",
-    "pkg-config",
-    "gnumake",
+    "opusTools",
+    "opusfile",
 ]
 
 [phases.install]
 cmds = [
-    "bun install",
     "npm install -g node-gyp",
     "npm install --build-from-source --legacy-peer-deps",
 ]
