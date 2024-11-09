@@ -17,8 +17,8 @@ nixPkgs = [
     "autoconf",
     "automake",
     "python3Full",
-    "npm",
     "git",
+    "nodePackages.npm",
 ]
 
 [phases.install]
