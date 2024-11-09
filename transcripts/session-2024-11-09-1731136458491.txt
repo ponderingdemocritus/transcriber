@@ -1,0 +1,11 @@
+Session Transcript
+Date: 2024-11-09
+
+[2024-11-09T07:13:53.833Z] loaf1337: All right, so today we're going to talk about the dojo stack.
+[2024-11-09T07:13:58.439Z] loaf1337: We're gonna talk about the SDK.
+[2024-11-09T07:14:02.712Z] loaf1337: and everything for the upcoming version one release.
+[2024-11-09T07:14:06.353Z] loaf1337: After that, Gloom is going to talk about...
+
+
+Summary:
+Loaf1337 is set to discuss the dojo stack, SDK, and details for the upcoming version one release, after which Gloom will speak about a different topic.
