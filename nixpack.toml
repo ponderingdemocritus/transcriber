@@ -28,8 +28,20 @@ nixPkgs = [
     "python3Full",
 ]
 
+[phases.install]
+cmds = [
+    "npm config set python python3",
+    "npm install -g node-gyp",
+    "npm install -g node-pre-gyp",
+]
+
 [phases.build]
-cmds = ["npm install -g node-gyp", "bun install"]
+cmds = [
+    "npm config set python python3",
+    "export NODE_GYP_FORCE_PYTHON=python3",
+    "npm rebuild",
+    "bun install --no-save",
+]
 
 [start]
 cmd = "bun start"
@@ -37,3 +49,5 @@ cmd = "bun start"
 [variables]
 NODE_ENV = "production"
 PYTHON = "python3"
+NODE_GYP_FORCE_PYTHON = "python3"
+PATH = "/usr/local/bin:/usr/bin:/bin:/app/node_modules/.bin"
