@@ -1,4 +1,3 @@
-# Specify the provider and build configuration
 [phases.setup]
 nixPkgs = [
     "nodejs_18",
@@ -17,14 +16,17 @@ nixPkgs = [
     "opusfile",
     "gnumake",
     "coreutils",
+    "binutils"  # Added this for additional build tools
 ]
 
 [phases.install]
-# Add node-gyp to PATH and run installations
+# Add node-gyp to PATH and run installations with proper environment
 cmds = [
-    "export PATH=/root/.bun/bin:$PATH",
+    "export PATH=/root/.bun/bin:/root/.nix-profile/bin:$PATH",
+    "export CPATH=/root/.nix-profile/include",
+    "export LIBRARY_PATH=/root/.nix-profile/lib",
     "bun install -g node-gyp",
-    "bun install",
+    "bun install"
 ]
 
 [start]
@@ -32,4 +34,6 @@ cmd = "bun start"
 
 [variables]
 NODE_ENV = "production"
-PATH = "/root/.bun/bin:$PATH"
+PATH = "/root/.bun/bin:/root/.nix-profile/bin:$PATH"
+CPATH = "/root/.nix-profile/include"
+LIBRARY_PATH = "/root/.nix-profile/lib"
