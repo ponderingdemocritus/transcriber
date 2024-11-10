@@ -16,7 +16,8 @@ nixPkgs = [
     "opusfile",
     "gnumake",
     "coreutils",
-    "binutils"  # Added this for additional build tools
+    "binutils",
+    "bash",        # Added this line
 ]
 
 [phases.install]
@@ -26,7 +27,7 @@ cmds = [
     "export CPATH=/root/.nix-profile/include",
     "export LIBRARY_PATH=/root/.nix-profile/lib",
     "bun install -g node-gyp",
-    "bun install"
+    "bun install",
 ]
 
 [start]
