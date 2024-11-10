@@ -18,7 +18,7 @@ nixPkgs = [
 ]
 
 [phases.install]
-cmds = ["bun install"]
+cmds = ["bun install -g node-gyp", "bun install"]
 
 [start]
 cmd = "bun start"
