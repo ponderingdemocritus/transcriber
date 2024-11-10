@@ -15,6 +15,7 @@ nixPkgs = [
     "gcc",
     "opusTools",
     "opusfile",
+    "gnumake",
 ]
 
 [phases.install]
