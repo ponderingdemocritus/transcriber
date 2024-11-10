@@ -18,10 +18,16 @@ nixPkgs = [
 ]
 
 [phases.install]
-cmds = ["bun install -g node-gyp", "bun install"]
+# Add node-gyp to PATH and run installations
+cmds = [
+    "export PATH=/root/.bun/bin:$PATH",
+    "bun install -g node-gyp",
+    "bun install",
+]
 
 [start]
 cmd = "bun start"
 
 [variables]
 NODE_ENV = "production"
+PATH = "/root/.bun/bin:$PATH"
