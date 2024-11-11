@@ -1,7 +1,6 @@
 [phases.setup]
 nixPkgs = [
     "nodejs_18",
-    "bun",
     "ffmpeg",
     "libogg",
     "libopus",
@@ -17,24 +16,21 @@ nixPkgs = [
     "gnumake",
     "coreutils",
     "binutils",
-    "bash",        # Added this line
+    "bash",
+    "corepack",
 ]
 
 [phases.install]
-# Add node-gyp to PATH and run installations with proper environment
 cmds = [
-    "export PATH=/root/.bun/bin:/root/.nix-profile/bin:$PATH",
-    "export CPATH=/root/.nix-profile/include",
-    "export LIBRARY_PATH=/root/.nix-profile/lib",
-    "bun install -g node-gyp",
-    "bun install",
+    'npm install -g corepack',
+    "corepack enable",
+    "corepack prepare pnpm@9.9.0 --activate",
+    "npm install -g node-gyp",
+    "pnpm install",
 ]
 
 [start]
-cmd = "bun start"
+cmd = "pnpm start"
 
 [variables]
 NODE_ENV = "production"
-PATH = "/root/.bun/bin:/root/.nix-profile/bin:$PATH"
-CPATH = "/root/.nix-profile/include"
-LIBRARY_PATH = "/root/.nix-profile/lib"

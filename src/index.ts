@@ -18,6 +18,9 @@ import { createWriteStream } from "node:fs";
 import OpenAI from "openai";
 import fs from "node:fs";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 // Add after imports
 interface TranscriptionEntry {
   timestamp: number;

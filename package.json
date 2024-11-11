@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "bun --env-file=.env index.ts"
+    "start": "node dist/index.js",
+    "build": "tsup"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -11,17 +12,20 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
+  "packageManager": "pnpm@9.9.0",
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.17.0",
+    "@types/dotenv": "^8.2.3",
     "@types/node": "^22.9.0",
     "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
     "ffmpeg-static": "^5.2.0",
     "libsodium-wrappers": "^0.7.15",
     "node-fetch": "^3.3.2",
-    "node-opus": "^0.3.3",
     "openai": "^4.71.1",
-    "opusscript": "^0.1.1",
-    "prism-media": "^1.3.5"
+    "opusscript": "^0.0.8",
+    "prism-media": "^1.3.5",
+    "tsup": "^8.3.5"
   }
 }
