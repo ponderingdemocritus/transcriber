@@ -321,7 +321,7 @@ async function handleLeaveCommand(interaction: ChatInputCommandInteraction) {
 
       // Send summary and transcript file to channel
       await interaction.editReply({
-        content: `Session Summary:\n\n${summary}`,
+        content: `Session ended. Full transcript and summary attached:`,
         files: [
           {
             attachment: consolidatedFileName,
