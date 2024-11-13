@@ -370,7 +370,7 @@ async function transcribeAudio(filePath: string): Promise<string> {
 async function summarizeText(text: string): Promise<string> {
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4-turbo",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
